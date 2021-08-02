@@ -27,7 +27,6 @@ public class RobotContainer {
   private final ArcadeDrive m_autoCommand = new ArcadeDrive(m_robotDrive);
 
   // The driver's controller 
-  //TODO: 1. go to Constants.java to set the right port
   static Joystick controller = new Joystick(DriveConstants.kControllerPort);
 
   /**
@@ -38,10 +37,9 @@ public class RobotContainer {
     configureButtonBindings();
 
     // Configure default commands (will be run continously when nothing else is scheduled)
-    //TODO: 2. Switch this to a new ArcadeDrive, you need to update the method in DriveSubsystem.java
     
     m_robotDrive.setDefaultCommand(
-      new RunCommand(() -> new TankDrive(m_robotDrive),
+      new RunCommand(() -> new ArcadeDrive(m_robotDrive),
       m_robotDrive
     ));
   }
