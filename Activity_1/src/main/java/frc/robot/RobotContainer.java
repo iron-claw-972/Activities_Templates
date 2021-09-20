@@ -60,7 +60,8 @@ public class RobotContainer {
 
   public static double getMotorSpeed(int port) {
     // get a joystick axis
-    return controller.getRawAxis(port);
+    // changed to dived it by 5
+    return controller.getRawAxis(port)/5;
   }
 
   /**
