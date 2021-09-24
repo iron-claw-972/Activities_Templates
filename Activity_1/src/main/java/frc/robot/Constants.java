@@ -27,7 +27,7 @@ public final class Constants {
     public static final int kControllerPort = 0;
 
     //TODO: 1. Set the joystick axis
-    public static final int kLeftJoyAxis = 1;
-    public static final int kRightJoyAxis = 4;
+    public static final int kLeftJoyAxis = 4;
+    public static final int kRightJoyAxis = 1;
   }
 }
