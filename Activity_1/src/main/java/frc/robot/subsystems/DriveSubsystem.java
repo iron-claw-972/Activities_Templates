@@ -51,7 +51,7 @@ public class DriveSubsystem extends SubsystemBase {
     // rightMotor2.follow(rightMotor1);
 
     //TODO: 1. Your robot may need to have the right motors inverted and not the left
-    leftMotor1.setInverted(true);
+    leftMotor1.setInverted(false);
   }
 
   /**
