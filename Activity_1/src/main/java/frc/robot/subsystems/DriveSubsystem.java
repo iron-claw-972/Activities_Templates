@@ -28,7 +28,7 @@ public class DriveSubsystem extends SubsystemBase {
   TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
   
   TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
-  TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
+  TalonSRX rightMotor2 = new TalonSRX(DriveConstants. kRightMotor2Port);
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -52,7 +52,10 @@ public class DriveSubsystem extends SubsystemBase {
 
     //TODO: 1. Your robot may need to have the right motors inverted and not the left
     leftMotor1.setInverted(true);
+    leftMotor2.setInverted(true);
+  
   }
+
 
   /**
    * Drives the robot using tank drive controls
@@ -76,8 +79,8 @@ public class DriveSubsystem extends SubsystemBase {
    * @param forward the commanded forward movement
    * @param turn the commanded turn rotation
    */
-  public void arcadeDrive(double throttle, double turn) {
-    leftMotor1.set(ControlMode.PercentOutput, throttle + turn);
-    rightMotor1.set(ControlMode.PercentOutput, throttle - turn);
+  public void arcadeDrive(double forward, double turn) {
+    leftMotor1.set(ControlMode.PercentOutput, forward - turn);
+    rightMotor1.set(ControlMode.PercentOutput, forward + turn);
   }
 }
