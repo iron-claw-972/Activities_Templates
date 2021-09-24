@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj2.command.*;
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
  * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
+ * (including subsystems, comm+ands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   //subsystems
@@ -60,7 +60,8 @@ public class RobotContainer {
 
   public static double getMotorSpeed(int port) {
     // get a joystick axis
-    return controller.getRawAxis(port);
+    // changed to dived it by 5
+    return controller.getRawAxis(port)/5;
   }
 
   /**
