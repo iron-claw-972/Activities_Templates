@@ -74,7 +74,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   /**
-   * Drives the robot using arcade controls.
+   * Drives the robot husing arcade controls.
    *
    * @param forward the commanded forward movement
    * @param turn the commanded turn rotation

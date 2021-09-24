@@ -26,8 +26,17 @@ public final class Constants {
     //make sure your controller is 0
     public static final int kControllerPort = 0;
 
+    
+  
+
+
     //TODO: 2. Change the joystick axis for arcade drive
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 4;
   }
+  public static final class ButtonConstants {
+    public static final int kA = 1;
+    public static final int kB = 2;
+    public static final int kX = 3;
+   }
 }
