@@ -62,8 +62,8 @@ public class DriveSubsystem extends SubsystemBase {
    */
 
   public void tankDrive(double leftPower, double rightPower) {
-    leftMotor1.set(ControlMode.PercentOutput, leftPower);
-    rightMotor1.set(ControlMode.PercentOutput, rightPower);
+    // leftMotor1.set(ControlMode.PercentOutput, leftPower);
+    // rightMotor1.set(ControlMode.PercentOutput, rightPower);
 
     //if using a sparkmax
     // leftMotor1.set(leftPower);
@@ -78,5 +78,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void arcadeDrive(double throttle, double turn) {
     //TODO: 2. Add arcade drive here by setting the motors
+    leftMotor1.set(ControlMode.PercentOutput, leftPower);
+    rightMotor1.set(ControlMode.PercentOutput, rightPower);
   }
 }
