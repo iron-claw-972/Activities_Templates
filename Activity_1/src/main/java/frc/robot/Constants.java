@@ -32,7 +32,7 @@ public final class Constants {
     }
   
   public static final class ButtonConstants {
-    public static final int kA = 1;
-    public static final int kB = 2;
+    public static final int kA = 2;
+    public static final int kB = 1;
   }
 }
