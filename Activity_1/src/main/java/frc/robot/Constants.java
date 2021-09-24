@@ -30,4 +30,7 @@ public final class Constants {
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 4;
   }
+  public static final class ButtonConstants{
+      public static final int kX = 3;
+  }
 }
