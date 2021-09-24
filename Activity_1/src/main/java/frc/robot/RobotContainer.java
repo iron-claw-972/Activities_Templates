@@ -44,7 +44,7 @@ public class RobotContainer {
     //TODO: 2. Switch this to a new ArcadeDrive, you need to update the method in DriveSubsystem.java
     
     m_robotDrive.setDefaultCommand(
-      new TankDrive(m_robotDrive)
+      new ArcadeDrive(m_robotDrive)
     );
   }
 
@@ -55,7 +55,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
+    new JoystickButton(controller, ButtonConstants.kB)
+    .whenPressed(() -> m_robotDrive.stop());
   }
 
   public static double getMotorSpeed(int port) {

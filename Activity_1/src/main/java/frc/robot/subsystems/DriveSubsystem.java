@@ -76,9 +76,13 @@ public class DriveSubsystem extends SubsystemBase {
    * @param forward the commanded forward movement
    * @param turn the commanded turn rotation
    */
-  public void arcadeDrive(double throttle, double turn) {
+  public void arcadeDrive(double turn, double throttle) {
     //TODO: 2. Add arcade drive here by setting the motors
-    leftMotor1.set(ControlMode.PercentOutput, throttle);
-    rightMotor1.set(ControlMode.PercentOutput, turn);
+    leftMotor1.set(ControlMode.PercentOutput, throttle - turn);
+    rightMotor1.set(ControlMode.PercentOutput, throttle + turn);
+  }
+  public void stop(){
+    leftMotor1.set(ControlMode.PercentOutput, 0);
+    rightMotor1.set(ControlMode.PercentOutput, 0);
   }
 }
