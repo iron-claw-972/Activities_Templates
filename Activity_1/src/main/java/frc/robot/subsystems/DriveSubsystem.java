@@ -29,6 +29,8 @@ public class DriveSubsystem extends SubsystemBase {
   
   TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
   TalonSRX rightMotor2 = new TalonSRX(DriveConstants. kRightMotor2Port);
+  
+  private int turnRadius = 0;
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -80,7 +82,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param turn the commanded turn rotation
    */
   public void arcadeDrive(double forward, double turn) {
-    leftMotor1.set(ControlMode.PercentOutput, forward - turn);
-    rightMotor1.set(ControlMode.PercentOutput, forward + turn);
+    leftMotor1.set(ControlMode.PercentOutput, forward - (turn *(1 - turnRadius)));
+    rightMotor1.set(ControlMode.PercentOutput, forward + (turn * (1 - turnRadius)));
   }
 }

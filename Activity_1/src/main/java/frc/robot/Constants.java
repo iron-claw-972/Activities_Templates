@@ -30,9 +30,10 @@ public final class Constants {
   
 
 
-    //TODO: 2. Change the joystick axis for arcade drive
+    //TODO: 2.  CHANGE TRIGGER AXIS
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 4;
+    public static final int kRightTrigger = 6;
   }
   public static final class ButtonConstants {
     public static final int kA = 1;
