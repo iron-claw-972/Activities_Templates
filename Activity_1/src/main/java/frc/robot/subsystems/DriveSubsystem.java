@@ -79,8 +79,8 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void arcadeDrive(double turn, double throttle) {
     //TODO: 2. Add arcade drive here by setting the motors
-    leftMotor1.set(ControlMode.PercentOutput, (throttle - turn)/sensitivity);
-    rightMotor1.set(ControlMode.PercentOutput, throttle + turn)/sensitivity;
+    leftMotor1.set(ControlMode.PercentOutput, (throttle - turn) / sensitivity);
+    rightMotor1.set(ControlMode.PercentOutput, (throttle + turn) / sensitivity);
   }
   public void modSensitivity(){
     if (sensitivity == 5) {
@@ -88,5 +88,6 @@ public class DriveSubsystem extends SubsystemBase {
     } else {
       sensitivity = 5;
     }
+    System.out.println("sensitivity changed");
   }
 }
