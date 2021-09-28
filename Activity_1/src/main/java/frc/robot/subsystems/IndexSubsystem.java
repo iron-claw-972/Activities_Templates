@@ -6,14 +6,30 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
+
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import frc.robot.Constants.DriveConstants;
+
+double indexSpeed = 0;
 
 public class IndexSubsystem extends SubsystemBase {
 
-    CANSparkMax indexMotor = new CANSparkMax(kIndexerMotorPort, MotorType.kBrushless);
+    
+    CANSparkMax indexMotor = new CANSparkMax(DriveConstants.kIndexerMotorPort, MotorType.kBrushless);
+
     public void toggleIndexRot() {
-        indexMotor.set(0.2);
+        // if (index speed == 0){
+
+        // }
+        indexMotor.set(indexSpeed);
     }
 //   public DriveSubsystem() {
 //     leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
