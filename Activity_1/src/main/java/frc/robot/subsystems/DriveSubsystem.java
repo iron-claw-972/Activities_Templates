@@ -29,6 +29,7 @@ public class DriveSubsystem extends SubsystemBase {
   
   TalonFX rightMotor1 = new TalonFX(DriveConstants.kRightMotor1Port);
   TalonFX rightMotor2 = new TalonFX(DriveConstants.kRightMotor1Port);
+  int sensitivity = 5;
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -78,11 +79,14 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void arcadeDrive(double turn, double throttle) {
     //TODO: 2. Add arcade drive here by setting the motors
-    leftMotor1.set(ControlMode.PercentOutput, throttle - turn);
-    rightMotor1.set(ControlMode.PercentOutput, throttle + turn);
+    leftMotor1.set(ControlMode.PercentOutput, (throttle - turn)/sensitivity);
+    rightMotor1.set(ControlMode.PercentOutput, throttle + turn)/sensitivity;
   }
-  public void stop(){
-    leftMotor1.set(ControlMode.PercentOutput, 0);
-    rightMotor1.set(ControlMode.PercentOutput, 0);
+  public void modSensitivity(){
+    if (sensitivity == 5) {
+      sensitivity = 2;
+    } else {
+      sensitivity = 5;
+    }
   }
 }

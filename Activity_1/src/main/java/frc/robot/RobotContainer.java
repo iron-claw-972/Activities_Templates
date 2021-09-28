@@ -56,13 +56,13 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     new JoystickButton(controller, ButtonConstants.kB)
-    .whenPressed(() -> m_robotDrive.stop());
+    .whenPressed(() -> m_robotDrive.modSensitivity());
   }
 
   public static double getMotorSpeed(int port) {
     // get a joystick axis
     // changed to dived it by 5
-    return controller.getRawAxis(port)/5;
+    return controller.getRawAxis(port);
   }
 
   /**
