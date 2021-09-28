@@ -22,6 +22,7 @@ public final class Constants {
     public static final int kLeftMotor2Port = 15;
     public static final int kRightMotor1Port = 1;
     public static final int kRightMotor2Port = 18;
+    public static final int kIndexerMotorPort= 4;
 
     //make sure your controller is 0
     public static final int kControllerPort = 0;
@@ -33,5 +34,6 @@ public final class Constants {
   
   public static final class ButtonConstants {
     public static final int kB = 2;
+    public static final int kY = 4;
   }
 }

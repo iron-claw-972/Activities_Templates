@@ -55,10 +55,10 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(controller, ButtonConstants.kB)
-    .whenPressed(() -> m_robotDrive.modSensitivity());
+    new JoystickButton(controller, ButtonConstants.kB).whenPressed(() -> m_robotDrive.modSensitivity());
+  //come back here and direct the thing proporly
+    new JoystickButton(controller, ButtonConstants.kY).whenPressed(() -> m_robotInxex.modSensitivity());
   }
-
   public static double getMotorSpeed(int port) {
     // get a joystick axis
     // changed to dived it by 5
