@@ -29,7 +29,7 @@ public class DriveSubsystem extends SubsystemBase {
   
   TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
 
-  private double speed = 1;
+  double speed = 1;
   //TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
 
   //how to set up sparkmaxes, if your robot has those
@@ -71,14 +71,17 @@ public class DriveSubsystem extends SubsystemBase {
     // rightMotor1.set(rightPower);
   }
 
-  public void toggleSpeed(){
-    if (speed == 1){
-      speed = 0.5;
-    }else{
-      speed = 1;
-    }
-
+  public void halfSpeed(){
+    speed = 0.5;
+    
   }
+
+  public void fullSpeed(){
+    speed = 1;
+    
+  }
+
+
   
 
   /**

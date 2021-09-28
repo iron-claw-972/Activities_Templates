@@ -56,7 +56,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //match joystick button to methods
-    new JoystickButton(controller, JoystickConstants.ButtonA).whenPressed(()->toggleSpeed());
+    new JoystickButton(controller, JoystickConstants.ButtonA)
+      .whenHeld(new InstantCommand(m_robotDrive::halfSpeed))
+      .whenReleased(new InstantCommand(m_robotDrive::fullSpeed));
+
+
   }
 
   public static double getMotorSpeed(int port) {
