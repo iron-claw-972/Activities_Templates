@@ -85,9 +85,10 @@ public class DriveSubsystem extends SubsystemBase {
   public void modSensitivity(){
     if (sensitivity == 5) {
       sensitivity = 2;
+      System.out.println("sensitivity changed to 1/2");
     } else {
       sensitivity = 5;
+      System.out.println("sensitivity changed to 1/5");
     }
-    System.out.println("sensitivity changed");
   }
 }
