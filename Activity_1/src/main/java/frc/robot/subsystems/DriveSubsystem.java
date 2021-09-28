@@ -28,6 +28,8 @@ public class DriveSubsystem extends SubsystemBase {
   //TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
   
   TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
+
+  private double speed = 1;
   //TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
 
   //how to set up sparkmaxes, if your robot has those
@@ -50,8 +52,7 @@ public class DriveSubsystem extends SubsystemBase {
     // leftMotor2.follow(leftMotor1);
     // rightMotor2.follow(rightMotor1);
 
-    //TODO: 1. Your robot may need to have the right motors inverted and not the left
-    leftMotor1.setInverted(true);
+   
   }
 
   /**
@@ -62,13 +63,23 @@ public class DriveSubsystem extends SubsystemBase {
    */
 
   public void tankDrive(double leftPower, double rightPower) {
-    leftMotor1.set(ControlMode.PercentOutput, leftPower);
-    rightMotor1.set(ControlMode.PercentOutput, rightPower);
+    leftMotor1.set(ControlMode.PercentOutput, leftPower*speed);
+    rightMotor1.set(ControlMode.PercentOutput, rightPower*speed);
 
     //if using a sparkmax
     // leftMotor1.set(leftPower);
     // rightMotor1.set(rightPower);
   }
+
+  public void toggleSpeed(){
+    if (speed == 1){
+      speed = 0.5;
+    }else{
+      speed = 1;
+    }
+
+  }
+  
 
   /**
    * Drives the robot using arcade controls.
@@ -78,7 +89,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void arcadeDrive(double throttle, double turn) {
     //TODO: 2. Add arcade drive here by setting the motors
-    leftMotor1.set(ControlMode.PercentOutput, throttle + turn);
-    rightMotor1.set(ControlMode.PercentOutput, throttle - turn);
+    leftMotor1.set(ControlMode.PercentOutput, throttle*speed + turn);
+    rightMotor1.set(ControlMode.PercentOutput, throttle*speed - turn);
   }
 }
