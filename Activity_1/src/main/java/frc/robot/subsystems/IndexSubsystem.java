@@ -18,27 +18,17 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.DriveConstants;
 
-double indexSpeed = 0;
-
 public class IndexSubsystem extends SubsystemBase {
 
-    
+    double indexSpeed = 0.1;
     CANSparkMax indexMotor = new CANSparkMax(DriveConstants.kIndexerMotorPort, MotorType.kBrushless);
 
     public void toggleIndexRot() {
-        // if (index speed == 0){
-
-        // }
+        if (indexSpeed == 0.1){
+            indexSpeed = -0.1;
+        }else{
+            indexSpeed = 0.1;
+        }
         indexMotor.set(indexSpeed);
     }
-//   public DriveSubsystem() {
-//     leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
-//     rightMotor2.set(ControlMode.Follower, DriveConstants.kRightMotor1Port);
-//     leftMotor1.setInverted(false);
-//   }
-//   public void arcadeDrive(double turn, double throttle) {
-//     //TODO: 2. Add arcade drive here by setting the motors
-//     leftMotor1.set(ControlMode.PercentOutput, (throttle - turn) / sensitivity);
-//     rightMotor1.set(ControlMode.PercentOutput, (throttle + turn) / sensitivity);
-//   }
 }
