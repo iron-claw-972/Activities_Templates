@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
-
+           
   // See https://github.com/iron-claw-972/HowToProgramming for how to do this. 
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
 
@@ -77,4 +77,5 @@ public class DriveSubsystem extends SubsystemBase {
     leftMotor1.set(ControlMode.PercentOutput, throttle + turn);
     rightMotor1.set(ControlMode.PercentOutput, throttle - turn);
   }
+
 }
