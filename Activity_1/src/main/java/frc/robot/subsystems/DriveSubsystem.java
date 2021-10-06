@@ -24,11 +24,9 @@ public class DriveSubsystem extends SubsystemBase {
   // See https://github.com/iron-claw-972/HowToProgramming for how to do this. 
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
 
-  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
-  TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
-  
+  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);  
+
   TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
-  TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -43,9 +41,6 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     //TODO: 1. if you have multiple motors per side, you should have one main motor that the others "follow"
     // however if you have 1 motor per side, then remove these
-    leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
-    rightMotor2.set(ControlMode.Follower, DriveConstants.kRightMotor1Port);
-
     //how to follow motors with sparkmaxes
     // leftMotor2.follow(leftMotor1);
     // rightMotor2.follow(rightMotor1);
@@ -61,7 +56,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param rightPower the commanded power to the right motors
    */
 
-  public void tankDrive(double leftPower, double rightPower) {
+  public void Drive(double leftPower, double rightPower) {
     leftMotor1.set(ControlMode.PercentOutput, leftPower);
     rightMotor1.set(ControlMode.PercentOutput, rightPower);
 
@@ -77,6 +72,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param turn the commanded turn rotation
    */
   public void arcadeDrive(double throttle, double turn) {
-    //TODO: 2. Add arcade drive here by setting the motors
+    leftMotor1.set(ControlMode.PercentOutput, throttle + turn);
+    rightMotor1.set(ControlMode.PercentOutput, throttle - turn);
   }
 }
