@@ -10,7 +10,7 @@ package frc.robot;
 import frc.robot.Constants.*;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.TankDrive;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import edu.wpi.first.wpilibj.Joystick;

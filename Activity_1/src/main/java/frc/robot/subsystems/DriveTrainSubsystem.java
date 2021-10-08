@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.DriveConstants;
 
-public class DriveSubsystem extends SubsystemBase {
+public class DriveTrainSubsystem extends SubsystemBase {
     TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
     TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor1Port);
     TalonSRX leftMotor3 = new TalonSRX(DriveConstants.kLeftMotor1Port);
@@ -22,7 +22,7 @@ public class DriveSubsystem extends SubsystemBase {
     private double powerModifier = 1;
 
 
-    public DriveSubsystem(){
+    public DriveTrainSubsystem(){
         leftMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
         leftMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
         rightMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
