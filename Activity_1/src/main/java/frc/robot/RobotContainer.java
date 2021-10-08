@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.*;
  */
 public class RobotContainer {
   //subsystems
-  private final DriveSubsystem m_robotDrive = new DriveSubsystem();
+  private final DriveTrainSubsystem m_robotDrive = new DriveTrainSubsystem();
 
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
@@ -55,8 +55,11 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton a = new JoystickButton(controller, ButtonConstants.kA);
-    a.whenPressed(new TankDrive(m_robotDrive));
+    JoystickButton a = new JoystickButton(controller, DriveConstants.kA);
+    a.whenPressed( () -> m_robotDrive.reducePower() );
+    JoystickButton b = new JoystickButton(controller, DriveConstants.kB);
+    b.whenPressed( () -> m_robotDrive.powerBack() );
+
   }
 
   public static double getMotorSpeed(int port) {

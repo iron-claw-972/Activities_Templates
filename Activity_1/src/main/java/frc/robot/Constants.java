@@ -30,6 +30,9 @@ public final class Constants {
     //make sure your controller is 0
     public static final int kControllerPort = 0;
 
+    public static final int kA = 1;
+    public static final int kB = 2;
+
     //TODO: 1. Set the joystick axis
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 4;

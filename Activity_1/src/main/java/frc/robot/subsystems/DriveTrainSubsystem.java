@@ -19,30 +19,28 @@ public class DriveSubsystem extends SubsystemBase {
     TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor1Port);
     TalonSRX rightMotor3 = new TalonSRX(DriveConstants.kRightMotor1Port);
 
+    private double powerModifier = 1;
 
 
-//public void tankDrive(double leftPower, double rightPower) {
-    //leftMotor1.set(ControlMode.PercentOutput, leftPower);
-    //leftMotor2.set(ControlMode.PercentOutput, leftPower);
-    //leftMotor3.set(ControlMode.PercentOutput, leftPower);
-    //rightMotor1.set(ControlMode.PercentOutput, rightPower);
-    //rightMotor2.set(ControlMode.PercentOutput, rightPower);
-    //rightMotor3.set(ControlMode.PercentOutput, rightPower);
+    public DriveSubsystem(){
+        leftMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
+        leftMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
+        rightMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
+        rightMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
+    }
 
-  
- // }
+    public void reducePower(){
+        powerModifier = 0.5;
+    }
 
+    public void powerBack(){
+        powerModifier = 1;
+    }
 
-public DriveSubsystem(){
-    leftMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-    leftMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-    rightMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-    rightMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-}
-public void arcadeDrive(double throttle, double turn) {
-    leftMotor1.set(ControlMode.PercentOutput, throttle + turn);
-    rightMotor1.set(ControlMode.PercentOutput, throttle - turn);
-  }
+    public void arcadeDrive(double throttle, double turn) {
+        leftMotor1.set(ControlMode.PercentOutput, (throttle + turn)*powerModifier);
+        rightMotor1.set(ControlMode.PercentOutput, (throttle - turn)*powerModifier);
+    }
 
 }
 
