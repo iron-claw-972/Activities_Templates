@@ -17,14 +17,15 @@ package frc.robot;
  */
 public final class Constants {
   public static final class DriveConstants {
-    //TODO: 1. Set this to the motor ports
-    public static final int kLeftMotor1Port = 1;
-    public static final int kRightMotor1Port = 2;
 
-    //make sure your controller is 0
+    public static final int kLeftMotor1Port = 1;
+    public static final int kRightMotor1Port = 7;
+    
+    public static final int kElevatorLeftMotor = 1;
+    public static final int kElevatorRightMotor = 2;
+
     public static final int kControllerPort = 0;
 
-    //TODO: 1. Set the joystick axis
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 5;
   }
