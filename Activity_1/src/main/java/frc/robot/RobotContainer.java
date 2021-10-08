@@ -55,7 +55,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
+    JoystickButton a = new JoystickButton(controller, ButtonConstants.kA);
+    a.whenPressed(new TankDrive(m_robotDrive));
   }
 
   public static double getMotorSpeed(int port) {

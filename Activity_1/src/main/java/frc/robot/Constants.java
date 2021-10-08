@@ -18,9 +18,13 @@ package frc.robot;
 public final class Constants {
   public static final class DriveConstants {
     //TODO: 1. Set this to the motor ports
-    public static final int kLeftMotor1Port = 1;
+    public static final int kLeftMotor1Port = 3;
+    public static final int kLeftMotor2Port = 4;
+    public static final int kLeftMotor3Port = 5;
    // public static final int kLeftMotor2Port = 1;
-    public static final int kRightMotor1Port = 2;
+    public static final int kRightMotor1Port = 6;
+    public static final int kRightMotor2Port = 7;
+    public static final int kRightMotor3Port = 8;
     //public static final int kRightMotor2Port = 2;
 
     //make sure your controller is 0
