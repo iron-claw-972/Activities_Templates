@@ -19,8 +19,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
-
-  //TODO: 1. Set the motor to the right type (Talon, CAN, etc.).
   // See https://github.com/iron-claw-972/HowToProgramming for how to do this. 
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
 
@@ -41,8 +39,6 @@ public class DriveSubsystem extends SubsystemBase {
    * Creates a new DriveSubsystem.
    */
   public DriveSubsystem() {
-    //TODO: 1. if you have multiple motors per side, you should have one main motor that the others "follow"
-    // however if you have 1 motor per side, then remove these
     leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
     rightMotor2.set(ControlMode.Follower, DriveConstants.kRightMotor1Port);
 
@@ -50,7 +46,6 @@ public class DriveSubsystem extends SubsystemBase {
     // leftMotor2.follow(leftMotor1);
     // rightMotor2.follow(rightMotor1);
 
-    //TODO: 1. Your robot may need to have the right motors inverted and not the left
     leftMotor1.setInverted(false);
 
   }
@@ -78,7 +73,6 @@ public class DriveSubsystem extends SubsystemBase {
    * @param turn the commanded turn rotation
    */
   public void arcadeDrive(double throttle, double turn) {
-    //TODO: 2. Add arcade drive here by setting the motors
     leftMotor1.set(ControlMode.PercentOutput, (-throttle + turn));
     rightMotor1.set(ControlMode.PercentOutput, (-throttle - turn));
   }

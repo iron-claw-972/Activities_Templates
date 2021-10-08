@@ -24,6 +24,9 @@ import edu.wpi.first.wpilibj2.command.*;
 public class RobotContainer {
   //subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
+  private final IntakeSusystem m_robotIntake = new IntakeSubsystem();
+
+
 
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
@@ -40,9 +43,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    // Configure default commands (will be run continously when nothing else is scheduled)
-    //TODO: 2. Switch this to a new ArcadeDrive, you need to update the method in DriveSubsystem.java
-    
+    // Configure default commands (will be run continously when nothing else is scheduled)    
     m_robotDrive.setDefaultCommand(
       new ArcadeDrive(m_robotDrive)
     );
@@ -55,6 +56,9 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
+    new JoystickButton(m_robotIntake, Button.kRightBumper.value)
+        .whenPressed(() -> m_robotIntake.toggle());
 
   }
 
