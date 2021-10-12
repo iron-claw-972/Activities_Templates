@@ -13,11 +13,11 @@ import frc.robot.Constants.DriveConstants;
 
 public class DriveTrainSubsystem extends SubsystemBase {
     TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
-    TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor1Port);
-    TalonSRX leftMotor3 = new TalonSRX(DriveConstants.kLeftMotor1Port);
+    TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
+    TalonSRX leftMotor3 = new TalonSRX(DriveConstants.kLeftMotor3Port);
     TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
-    TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor1Port);
-    TalonSRX rightMotor3 = new TalonSRX(DriveConstants.kRightMotor1Port);
+    TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
+    TalonSRX rightMotor3 = new TalonSRX(DriveConstants.kRightMotor3Port);
 
     private double powerModifier = 1;
 
@@ -27,7 +27,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
         leftMotor3.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
         rightMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
         rightMotor3.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
+    
+    
     }
+
 
     public void reducePower(){
         powerModifier = 0.5;
