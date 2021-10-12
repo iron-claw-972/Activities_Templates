@@ -12,10 +12,13 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import com.revrobotics.CANSparkMax;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -23,14 +26,18 @@ public class DriveSubsystem extends SubsystemBase {
   //TODO: 1. Set the motor to the right type (Talon, CAN, etc.).
   // See https://github.com/iron-claw-972/HowToProgramming for how to do this. 
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
+  //SensorCollection leftEncoder1 = talon.configSelectedFeedbackSensor(FeedbackDevice.leftMotor1, 0, 100);
+  //SensorCollection rightEncoder2 = talon.configSelectedFeedbackSensor(FeedbackDevice.rightMotor1, 0, 100);
 
-  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
+  //TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
   //TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
-  
-  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
+  //TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
 
   double speed = 1;
   //TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
+
+  CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.Brushless);
+  Encoder sparkEncoder = new Encoder(0, 1, false )
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -73,6 +80,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void halfSpeed(){
     speed = 0.5;
+  
     
   }
 
@@ -95,4 +103,13 @@ public class DriveSubsystem extends SubsystemBase {
     leftMotor1.set(ControlMode.PercentOutput, throttle*speed + turn);
     rightMotor1.set(ControlMode.PercentOutput, throttle*speed - turn);
   }
+  public void meterDrive(double kP, double kI, double kD){
+    PIDController pid = new PIDController(kP, kI, kD);
+    leftMotor1.set(pid.calculate(encoder.getDistance(), setpoint));
+    rightMotor1.set(pid.calculate(encoder.getDistance(), setpoint));
+
+
+  }
+
+  
 }
