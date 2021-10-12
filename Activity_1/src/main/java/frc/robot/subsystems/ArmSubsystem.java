@@ -12,20 +12,18 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
 public class ArmSubsystem extends SubsystemBase {
-    TalonSRX LeftArmMotor1 = new TalonSRX(DriveConstants.kLeftArmMotorPort);
-    TalonSRX RightArmMotor1 = new TalonSRX(DriveConstants.kRightArmMotorPort);
-    TalonSRX LeftIntakeMotor2 = new TalonSRX(DriveConstants.kLeftIntakeMotorPort);
-    TalonSRX RightIntakeMotor2 = new TalonSRX(DriveConstants.kRightIntakeMotorPort);
+    TalonSRX leftArmMotor1 = new TalonSRX(DriveConstants.kLeftArmMotorPort);
+    TalonSRX rightArmMotor1 = new TalonSRX(DriveConstants.kRightArmMotorPort);
+    TalonSRX leftIntakeMotor2 = new TalonSRX(DriveConstants.kLeftIntakeMotorPort);
+    TalonSRX rightIntakeMotor2 = new TalonSRX(DriveConstants.kRightIntakeMotorPort);
     
     public ArmSubsystem() {
-        RightIntakeMotor2.set(ControlMode.Follower, DriveConstants.kLeftIntakeMotorPort);
-        RightArmMotor1.set(ControlMode.Follower, DriveConstants.kLeftArmMotorPort);
+        rightIntakeMotor2.set(ControlMode.Follower, DriveConstants.kLeftIntakeMotorPort);
+        rightArmMotor1.set(ControlMode.Follower, DriveConstants.kLeftArmMotorPort);
     
     }
 
-    public void tankDrive(double leftPower, double rightPower) {
-        leftMotor1.set(ControlMode.PercentOutput, leftPower);
-        rightMotor1.set(ControlMode.PercentOutput, rightPower);
-        leftMotor2.set(ControlMode.PercentOutput, leftPower);
-        rightMotor2.set(ControlMode.PercentOutput, rightPower);
+    public void run(double armPower) {
+        leftArmMotor1.set(ControlMode.PercentOutput, armPower);
+        leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
     }

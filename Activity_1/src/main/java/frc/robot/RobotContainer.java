@@ -39,7 +39,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-
+    
     // Configure default commands (will be run continously when nothing else is scheduled)
     //TODO: 2. Switch this to a new ArcadeDrive, you need to update the method in DriveSubsystem.java
     
@@ -55,13 +55,122 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    JoyStickButton x = new JoyStickButton(controller, 3);
+    x.whenheld(new RunIntake(m_robotArm, 10));
+  
 
+    JoyStickButton a = new JoyStickButton(controller, 1);
+    a.whenheld(new RunIntake(m_robotArm, -10));
   }
+  
 
   public static double getMotorSpeed(int port) {
     // get a joystick axis
     return controller.getRawAxis(port);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
