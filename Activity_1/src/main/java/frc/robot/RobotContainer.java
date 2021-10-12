@@ -8,8 +8,7 @@
 package frc.robot;
 
 import frc.robot.Constants.*;
-import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.TankDrive;
+import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -55,7 +54,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton aButton = new JoystickButton(controller, ButtonConstants.kA);
-    aButton.whenHeld(new RunElevator());
+    aButton.whenHeld(new ElevatorDrive(new ElevatorSubsystem()));
   }
 
   public static double getMotorSpeed(int port) {

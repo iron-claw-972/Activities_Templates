@@ -15,11 +15,6 @@ import frc.robot.Constants.DriveConstants;
 public class ArcadeDrive extends CommandBase {
   private final DriveSubsystem m_drive;
 
-  /**
-   * Creates a new ArcadeDrive.
-   *
-   * @param subsystem The drive subsystem this command wil run on.
-   */
   public ArcadeDrive(DriveSubsystem subsystem) {
     m_drive = subsystem;
     addRequirements(m_drive);

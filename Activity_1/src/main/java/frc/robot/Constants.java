@@ -20,13 +20,22 @@ public final class Constants {
 
     public static final int kLeftMotor1Port = 1;
     public static final int kRightMotor1Port = 7;
-    
-    public static final int kElevatorLeftMotor = 1;
-    public static final int kElevatorRightMotor = 2;
 
     public static final int kControllerPort = 0;
 
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 5;
+  }
+
+  public static final class ElevatorConstants {
+
+    public static final int kElevatorLeftMotor = 1;
+    public static final int kElevatorRightMotor = 2;
+
+  }
+
+  public static final class ButtonConstants {
+    
+    public static final int kA = 1;
   }
 }

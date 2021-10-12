@@ -56,7 +56,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param rightPower the commanded power to the right motors
    */
 
-  public void Drive(double leftPower, double rightPower) {
+  public void tankDrive(double leftPower, double rightPower) {
     leftMotor1.set(ControlMode.PercentOutput, leftPower);
     rightMotor1.set(ControlMode.PercentOutput, rightPower);
 

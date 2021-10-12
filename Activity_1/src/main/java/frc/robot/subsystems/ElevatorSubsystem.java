@@ -9,11 +9,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.*;
 
 public class ElevatorSubsystem extends SubsystemBase{
-    TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kElevatorLeftMotor);
-    TalonSRX rightMotor1 = new talonSRX(DriveConstants.kElevatorRightMotor);
+    TalonSRX leftMotor1 = new TalonSRX(ElevatorConstants.kElevatorLeftMotor);
+    TalonSRX rightMotor1 = new TalonSRX(ElevatorConstants.kElevatorRightMotor);
 
     public ElevatorSubsystem(){
         leftMotor1.setInverted(true);
