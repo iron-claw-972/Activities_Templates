@@ -30,9 +30,22 @@ public final class Constants {
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 5;
 
+    public static final double kP = 0.1;
+    public static final double kI = 0;
+    public static final double kD = 0;
+
   }
 
   public static final class JoystickConstants{
-    public static final int ButtonA = 1;
+    public static final int kA = 0;
+    public static final int KB = 1;
+    public static final int kY = 2;
+
   }
+
+  public static final class RotationConstants{
+    public static final int kTopMotor1Port = 6;
+    public static final int kTopMotor2Port = 5;
+  }
+
 }

@@ -56,9 +56,13 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //match joystick button to methods
-    new JoystickButton(controller, JoystickConstants.ButtonA)
-      .whenHeld(new InstantCommand(m_robotDrive::halfSpeed))
-      .whenReleased(new InstantCommand(m_robotDrive::fullSpeed));
+    new JoystickButton(controller, DriveConstants.kA)
+      .whenHeld(new InstantCommand(m_robotDrive::halfSpeed, m_robotDrive))
+      .whenReleased(new InstantCommand(m_robotDrive::fullSpeed, m_robotDrive));
+
+    new JoystickButton(controller, DriveConstants.kY)
+      .whenHeld(new InstantCommand(m_robotDrive::wheelOfFortune, m_robotDrive))
+      .whenReleased(new InstantCommand(m_robotDrive::stopPID, m_robotDrive));
 
 
   }
