@@ -23,10 +23,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
 
     public DriveTrainSubsystem(){
-        leftMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-        leftMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-        rightMotor2.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
-        rightMotor3.set(ControlCode.Follower, DriveConstants.kLeftMotor1Port);
+        leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
+        leftMotor3.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
+        rightMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
+        rightMotor3.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
     }
 
     public void reducePower(){

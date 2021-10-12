@@ -27,7 +27,7 @@ public class RobotContainer {
 
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
-    () -> m_robotDrive.tankDrive(0.2, -0.2),
+    () -> m_robotDrive.arcadeDrive(0.2, -0.2),
     m_robotDrive);
 
   // The driver's controller
