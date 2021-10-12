@@ -10,15 +10,12 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.revrobotics.CANSparkMax;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.revrobotics.CANSparkMax;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -29,15 +26,18 @@ public class DriveSubsystem extends SubsystemBase {
   //SensorCollection leftEncoder1 = talon.configSelectedFeedbackSensor(FeedbackDevice.leftMotor1, 0, 100);
   //SensorCollection rightEncoder2 = talon.configSelectedFeedbackSensor(FeedbackDevice.rightMotor1, 0, 100);
 
-  //TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
-  //TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
-  //TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
+  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
+  TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
+  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
+  TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
+
 
   double speed = 1;
-  //TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
 
   CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.Brushless);
-  Encoder sparkEncoder = new Encoder(0, 1, false )
+  Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+  
+  PIDController pid = new PIDController(kP, kI, kD);
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -58,6 +58,7 @@ public class DriveSubsystem extends SubsystemBase {
     //how to follow motors with sparkmaxes
     // leftMotor2.follow(leftMotor1);
     // rightMotor2.follow(rightMotor1);
+    sparkEncoder.setDistancePerPulse(1);
 
    
   }
@@ -103,13 +104,25 @@ public class DriveSubsystem extends SubsystemBase {
     leftMotor1.set(ControlMode.PercentOutput, throttle*speed + turn);
     rightMotor1.set(ControlMode.PercentOutput, throttle*speed - turn);
   }
+  /*
   public void meterDrive(double kP, double kI, double kD){
     PIDController pid = new PIDController(kP, kI, kD);
     leftMotor1.set(pid.calculate(encoder.getDistance(), setpoint));
     rightMotor1.set(pid.calculate(encoder.getDistance(), setpoint));
+  }
+  */
 
+  public void periodic(){
+    neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 420);
+  }
+
+  public void wheelOfFortune(){
+    sparkMotor.set(neoMotorPower);
 
   }
 
+  public void stopPID(){
+    sparkMotor.set(0);
+  }
   
 }
