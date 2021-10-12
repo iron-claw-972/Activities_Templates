@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants.DriveConstants;
 
-public class RunElevator extends CommandBase {
+public class ElevatorDrive extends CommandBase {
     private final ElevatorSubsystem elev_drive;
 
     public ElevatorDrive(ElevatorSubsystem subsystem) {
