@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj2.command.*;
 public class RobotContainer {
   //subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-  private final IntakeSusystem m_robotIntake = new IntakeSubsystem();
+  private final IntakeSubsystem m_robotIntake = new IntakeSubsystem();
 
 
 
@@ -57,8 +57,13 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    new JoystickButton(m_robotIntake, Button.kRightBumper.value)
-        .whenPressed(() -> m_robotIntake.toggle());
+    new JoystickButton(controller, DriveConstants.kB).whenPressed(new InstantCommand(
+        m_robotIntake::extendIntake,
+        m_robotIntake));
+
+    new JoystickButton(controller, DriveConstants.kA).whenPressed(new InstantCommand(
+        m_robotIntake::retractIntake,
+        m_robotIntake));
 
   }
 
