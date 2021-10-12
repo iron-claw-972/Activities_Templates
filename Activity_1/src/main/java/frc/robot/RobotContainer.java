@@ -55,11 +55,13 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton a = new JoystickButton(controller, DriveConstants.kA);
-    a.whenPressed( () -> m_robotDrive.reducePower() );
+
+    JoystickButton aButton = new JoystickButton(controller, DriveConstants.kA);
+    aButton.whenPressed( () -> m_robotDrive.reducePower() );
     JoystickButton b = new JoystickButton(controller, DriveConstants.kB);
     b.whenPressed( () -> m_robotDrive.powerBack() );
-
+    JoystickButton x = new JoystickButton(controller, DriveConstants.kX);
+    x.whenPressed( () -> m_robotDrive.speedy() );
   }
 
   public static double getMotorSpeed(int port) {

@@ -32,6 +32,7 @@ public final class Constants {
 
     public static final int kA = 1;
     public static final int kB = 2;
+    public static final int kX = 3;
 
     //TODO: 1. Set the joystick axis
     public static final int kLeftJoyAxis = 1;

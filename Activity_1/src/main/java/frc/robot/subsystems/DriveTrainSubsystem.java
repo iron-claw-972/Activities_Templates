@@ -40,6 +40,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
         powerModifier = 1;
     }
 
+    public void speedy(){
+        powerModifier= 5;
+    }
+
     public void arcadeDrive(double throttle, double turn) {
         leftMotor1.set(ControlMode.PercentOutput, (throttle + turn)*powerModifier);
         rightMotor1.set(ControlMode.PercentOutput, (throttle - turn)*powerModifier);
