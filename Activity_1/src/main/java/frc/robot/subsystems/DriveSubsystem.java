@@ -16,7 +16,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.DriveConstants.*;
+
 
 public class DriveSubsystem extends SubsystemBase {
 
@@ -26,10 +27,10 @@ public class DriveSubsystem extends SubsystemBase {
   //SensorCollection leftEncoder1 = talon.configSelectedFeedbackSensor(FeedbackDevice.leftMotor1, 0, 100);
   //SensorCollection rightEncoder2 = talon.configSelectedFeedbackSensor(FeedbackDevice.rightMotor1, 0, 100);
 
-  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
-  TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
-  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
-  TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
+  TalonSRX leftMotor1 = new TalonSRX(kLeftMotor1Port);
+  TalonSRX leftMotor2 = new TalonSRX(kLeftMotor2Port);
+  TalonSRX rightMotor1 = new TalonSRX(kRightMotor1Port);
+  TalonSRX rightMotor2 = new TalonSRX(kRightMotor2Port);
 
 
   double speed = 1;
