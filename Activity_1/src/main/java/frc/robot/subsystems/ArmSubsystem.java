@@ -27,3 +27,4 @@ public class ArmSubsystem extends SubsystemBase {
         leftArmMotor1.set(ControlMode.PercentOutput, armPower);
         leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
     }
+}
