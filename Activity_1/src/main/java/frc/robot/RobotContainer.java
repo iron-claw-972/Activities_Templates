@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj2.command.*;
 public class RobotContainer {
   //subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-
+  private final ArmSubsystem m_robotArm = new ArmSubsystem();
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
     () -> m_robotDrive.tankDrive(0.2, -0.2),
@@ -55,7 +55,11 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    JoystickButton xButton = new JoystickButton(controller, 3);
+    xButton.whenHeld(new RunIntake(m_robotArm, 10));
 
+    JoystickButton aButton = new JoystickButton(controller, 1);
+    aButton.whenHeld(new RunIntake(m_robotArm, -10));
   }
 
   public static double getMotorSpeed(int port) {

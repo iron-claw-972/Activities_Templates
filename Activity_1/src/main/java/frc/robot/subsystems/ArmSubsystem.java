@@ -32,6 +32,6 @@ public class ArmSubsystem extends SubsystemBase {
  
   public void run(double armPower) {
     leftArmMotor.set(ControlMode.PercentOutput, armPower);
-    leftIntakeMotor.set(ControlMode.PercentOutput, pow);
+    leftIntakeMotor.set(ControlMode.PercentOutput, armPower);
   }
 }
