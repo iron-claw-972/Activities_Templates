@@ -35,8 +35,9 @@ public class DriveSubsystem extends SubsystemBase {
 
   double speed = 1;
 
-  CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.Brushless);
-  Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+  CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.kBrushless);
+  //fix this// CAN Encoder Spark Max?
+  //Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
   
   PIDController pid = new PIDController(kP, kI, kD);
 
@@ -114,7 +115,7 @@ public class DriveSubsystem extends SubsystemBase {
   */
 
   public void periodic(){
-    neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 420);
+    neoMotorPower = pid.calculate(sparkMotor.getEncoder().getDistance(), 420);
   }
 
   public void wheelOfFortune(){
