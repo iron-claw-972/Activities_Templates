@@ -8,8 +8,7 @@
 package frc.robot;
 
 import frc.robot.Constants.*;
-import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.TankDrive;
+import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -24,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.*;
 public class RobotContainer {
   //subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-  private final ArmSubsystem m_robotDrive = new ArmSubsystem();
+  private final ArmSubsystem m_robotArm = new ArmSubsystem();
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
     () -> m_robotDrive.tankDrive(0.2, -0.2),
@@ -55,12 +54,12 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoyStickButton x = new JoyStickButton(controller, 3);
-    x.whenheld(new RunIntake(m_robotArm, 10));
+    JoystickButton x = new JoystickButton(controller, 3);
+    x.whenHeld(new RunIntake(m_robotArm, 10));
   
 
-    JoyStickButton a = new JoyStickButton(controller, 1);
-    a.whenheld(new RunIntake(m_robotArm, -10));
+    JoystickButton a = new JoystickButton(controller, 1);
+    a.whenHeld(new RunIntake(m_robotArm, -10));
   }
   
 
