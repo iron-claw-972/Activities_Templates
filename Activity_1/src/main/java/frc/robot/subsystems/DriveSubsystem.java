@@ -27,7 +27,7 @@ public class DriveSubsystem extends SubsystemBase {
   TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotorPort);
   //TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
   
-  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
+  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotorPort);
   //TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
 
   //how to set up sparkmaxes, if your robot has those
