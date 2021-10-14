@@ -15,13 +15,13 @@ public class RunIntake extends CommandBase {
     m_power = power;
   }
 
-  @Override
+  //Override
   public void initialize () {
     m_arm.run(m_power);
   }
 
-  @Override
-  public void end() {
+  //override
+  public void end(boolean interrupted) {
     m_arm.run(0);
   }
 }
