@@ -55,11 +55,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton x = new JoystickButton(controller, 3);
-    x.whenHeld(new RunIntake(m_robotArm, 10));
+    x.whenheld(new RunIntake(m_robotArm, 10));
   
 
     JoystickButton a = new JoystickButton(controller, 1);
-    a.whenHeld(new RunIntake(m_robotArm, -10));
+    a.whenheld(new RunIntake(m_robotArm, -10));
   }
   
 
@@ -67,108 +67,6 @@ public class RobotContainer {
     // get a joystick axis
     return controller.getRawAxis(port);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   /**
