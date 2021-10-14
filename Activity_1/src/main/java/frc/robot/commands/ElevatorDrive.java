@@ -22,13 +22,13 @@ public class ElevatorDrive extends CommandBase {
       addRequirements(elev_drive);
     }
   
-    //override
+    @Override
     public void execute() {
       elev_drive.run(0.5);
       }
 
-    //override
-    public void end(){
+    @Override
+    public void end(boolean interrupted){
         elev_drive.run(0.0);
     }
   }
