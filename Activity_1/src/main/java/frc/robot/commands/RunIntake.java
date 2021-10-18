@@ -25,5 +25,7 @@ public class RunIntake extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     m_arm.run(0);
-  }
+   
+    talon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 100);
+  }  
 }

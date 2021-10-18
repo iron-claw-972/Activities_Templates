@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.revrobotics.CANSparkMax;
 
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -24,14 +25,17 @@ public class ArmSubsystem extends SubsystemBase {
   TalonSRX rightArmMotor = new TalonSRX(ArmConstants.kRightArmMotorPort);
   TalonSRX leftIntakeMotor = new TalonSRX(ArmConstants.kLeftIntakeMotorPort);
   TalonSRX rightIntakeMotor = new TalonSRX(ArmConstants.kRightIntakeMotorPort);
+  PIDController pid = new PIDController(1, 0, 0);
 
   public ArmSubsystem() {
     rightArmMotor.set(ControlMode.Follower, ArmConstants.kLeftArmMotorPort);       
     rightIntakeMotor.set(ControlMode.Follower, ArmConstants.kLeftIntakeMotorPort);
+    leftArmMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 100);
   }
  
   public void run(double armPower) {
-    leftArmMotor.set(ControlMode.PercentOutput, armPower);
+    double currentPosition = leftArmMotor.getSensorCollection().getQuadraturePosition();
+    leftArmMotor.set(ControlMode.PercentOutput, pid.calculate(currentPosition, setpoint));
     leftIntakeMotor.set(ControlMode.PercentOutput, armPower);
   }
 }
