@@ -24,10 +24,10 @@ public class DriveSubsystem extends SubsystemBase {
   // See https://github.com/iron-claw-972/HowToProgramming for how to do this. 
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
 
-  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotor1Port);
+  TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotorPort);
   //TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
   
-  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotor1Port);
+  TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotorPort);
   //TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
 
   //how to set up sparkmaxes, if your robot has those

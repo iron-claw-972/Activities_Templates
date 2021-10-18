@@ -16,18 +16,18 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.ArmConstants;
 
 public class ArmSubsystem extends SubsystemBase {
 
-  TalonSRX leftArmMotor = new TalonSRX(DriveConstants.kLeftArmMotorPort);
-  TalonSRX rightArmMotor = new TalonSRX(DriveConstants.kRightArmMotorPort);
-  TalonSRX leftIntakeMotor = new TalonSRX(DriveConstants.kleftIntakeMotorPort);
-  TalonSRX rightIntakeMotor = new TalonSRX(DriveConstants.krightIntakeMotorPort);
+  TalonSRX leftArmMotor = new TalonSRX(ArmConstants.kLeftArmMotorPort);
+  TalonSRX rightArmMotor = new TalonSRX(ArmConstants.kRightArmMotorPort);
+  TalonSRX leftIntakeMotor = new TalonSRX(ArmConstants.kLeftIntakeMotorPort);
+  TalonSRX rightIntakeMotor = new TalonSRX(ArmConstants.kRightIntakeMotorPort);
 
   public ArmSubsystem() {
-    rightArmMotor.set(ControlMode.Follower, DriveConstants.kleftArmMotorPort);       
-    rightIntakeMotor.set(ControlMode.Follower, DriveConstants.kleftIntakeMotorPort);
+    rightArmMotor.set(ControlMode.Follower, ArmConstants.kLeftArmMotorPort);       
+    rightIntakeMotor.set(ControlMode.Follower, ArmConstants.kLeftIntakeMotorPort);
   }
  
   public void run(double armPower) {

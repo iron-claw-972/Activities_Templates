@@ -2,7 +2,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 
@@ -23,7 +23,7 @@ public class RunIntake extends CommandBase {
   }
 
   @Override
-  public void done() {
+  public void end(boolean interrupted) {
     m_arm.run(0);
-   }
+  }
 }
