@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -20,7 +21,6 @@ public class ArmSubsystem extends SubsystemBase {
     public ArmSubsystem() {
         rightIntakeMotor2.set(ControlMode.Follower, ArmConstants.kLeftIntakeMotorPort);
         rightArmMotor1.set(ControlMode.Follower, ArmConstants.kLeftArmMotorPort);
-    
     }
 
     public void run(double armPower) {
