@@ -7,9 +7,11 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Encoder;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import edu.wpi.first.wpilibj.controller.PIDController;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -35,10 +37,10 @@ public class DriveSubsystem extends SubsystemBase {
 
   double speed = 1;
 
-  CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.Brushless);
+  CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.kBrushless);
   Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
   
-  PIDController pid = new PIDController(kP, kI, kD);
+  PIDController pid = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
 
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
@@ -75,9 +77,6 @@ public class DriveSubsystem extends SubsystemBase {
     leftMotor1.set(ControlMode.PercentOutput, leftPower*speed);
     rightMotor1.set(ControlMode.PercentOutput, rightPower*speed);
 
-    //if using a sparkmax
-    // leftMotor1.set(leftPower);
-    // rightMotor1.set(rightPower);
   }
 
   public void halfSpeed(){
@@ -101,7 +100,6 @@ public class DriveSubsystem extends SubsystemBase {
    * @param turn the commanded turn rotation
    */
   public void arcadeDrive(double throttle, double turn) {
-    //TODO: 2. Add arcade drive here by setting the motors
     leftMotor1.set(ControlMode.PercentOutput, throttle*speed + turn);
     rightMotor1.set(ControlMode.PercentOutput, throttle*speed - turn);
   }
@@ -112,6 +110,8 @@ public class DriveSubsystem extends SubsystemBase {
     rightMotor1.set(pid.calculate(encoder.getDistance(), setpoint));
   }
   */
+
+  double neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 420);
 
   public void periodic(){
     neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 420);
