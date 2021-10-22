@@ -21,16 +21,19 @@ public class ArmSubsystem extends SubsystemBase {
 
     public ArmSubsystem() {
         leftArmMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 100);
-        rightArmMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 100);
+
         rightIntakeMotor2.set(ControlMode.Follower, ArmConstants.kLeftIntakeMotorPort);
         rightArmMotor1.set(ControlMode.Follower, ArmConstants.kLeftArmMotorPort);
-        
-    
     }
 
     public void run(double armPower) {
+        leftArmMotor1.set(ControlMode.PercentOutput, armPower);
+        leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
+    }
+
+    public void runPID(double setpoint) {
         double currentPosition = leftArmMotor.getSensorCollection().getQuadraturePosition();
         leftArmMotor1.set(ControlMode.PercentOutput, pid.calculate(currentPosition, setpoint));
-        leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
+        leftIntakeMotor2.set(ControlMode.PercentOutput, 10);
     }
 }
