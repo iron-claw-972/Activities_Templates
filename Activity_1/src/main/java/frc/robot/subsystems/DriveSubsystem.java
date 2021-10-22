@@ -37,7 +37,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   double speed = 1;
 
-  CANSparkMax sparkMotor = new CANSparkMax(51, MotorType.kBrushless);
+  CANSparkMax sparkMotor = new CANSparkMax(1, MotorType.kBrushless);
   Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
   
   PIDController pid = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
