@@ -59,7 +59,7 @@ public class RobotContainer {
   
 
     JoystickButton a = new JoystickButton(controller, 1);
-    a.whenHeld(new RunIntake(m_robotArm, -10));
+    a.whenHeld(new RunIntake(m_robotArm, 10));
   }
   
 
