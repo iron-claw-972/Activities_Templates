@@ -35,6 +35,8 @@ public final class Constants {
     public static final int kRightArmMotorPort = 10;
     public static final int kLeftIntakeMotorPort = 11;
     public static final int kRightIntakeMotorPort = 12;
-    
+    public static final int kArmMovementDistance = 10000;
   }
+
+
 }
