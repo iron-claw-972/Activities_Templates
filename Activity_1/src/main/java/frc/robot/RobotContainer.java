@@ -55,11 +55,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton x = new JoystickButton(controller, 3);
-    x.whenHeld(new RunPIDIntake(m_robotArm, 10));
+    x.whenHeld(new RunPIDIntake(m_robotArm, ArmConstants.kArmMovementDistance));
   
 
     JoystickButton a = new JoystickButton(controller, 1);
-    a.whenHeld(new RunPIDIntake(m_robotArm, -10));
+    a.whenHeld(new RunPIDIntake(m_robotArm, 0));
   }
   
 

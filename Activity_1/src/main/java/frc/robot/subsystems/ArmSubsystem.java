@@ -17,7 +17,7 @@ public class ArmSubsystem extends SubsystemBase {
     TalonSRX rightArmMotor1 = new TalonSRX(ArmConstants.kRightArmMotorPort);
     TalonSRX leftIntakeMotor2 = new TalonSRX(ArmConstants.kLeftIntakeMotorPort);
     TalonSRX rightIntakeMotor2 = new TalonSRX(ArmConstants.kRightIntakeMotorPort);
-    PIDController pid = new PIDController(0.001, 0, 0);
+    PIDController pid = new PIDController(0.01555, 0, 0.05);
 
     double startingPosition;
 
@@ -25,7 +25,7 @@ public class ArmSubsystem extends SubsystemBase {
         rightIntakeMotor2.set(ControlMode.Follower, ArmConstants.kLeftIntakeMotorPort);
         rightArmMotor1.set(ControlMode.Follower, ArmConstants.kLeftArmMotorPort);
         leftArmMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 100);
-        startingPosition = leftArmMotor1.getSensorCollection().getQuadraturePosition();
+        startingPosition = (leftArmMotor1.getSensorCollection().getQuadraturePosition() / ArmConstants.TICKS_PER_ROTATION);
     }
 
     public void run(double armPower) {
@@ -33,13 +33,14 @@ public class ArmSubsystem extends SubsystemBase {
         leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
     }
 
+
     
     public void runPID(double setpoint) {
-        double currentPosition = leftArmMotor1.getSensorCollection().getQuadraturePosition() - startingPosition;
-        //leftArmMotor1.set(ControlMode.PercentOutput, pid.calculate(currentPosition, ArmConstants.kArmMovementDistance));
-        //leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
+        double currentPosition = -1 * ((leftArmMotor1.getSensorCollection().getQuadraturePosition() / ArmConstants.TICKS_PER_ROTATION) - startingPosition);
+        //leftArmMotor1.set(ControlMode.PercentOutput, pid.calculate(currentPosition, setpoint));
+        //leftIntakeMotor2.set(ControlMode.PercentOutput, 0);
         System.out.println(currentPosition);
-        System.out.println(pid.calculate(currentPosition, ArmConstants.kArmMovementDistance));
+        System.out.println(pid.calculate(currentPosition, setpoint));
     }
 }
 

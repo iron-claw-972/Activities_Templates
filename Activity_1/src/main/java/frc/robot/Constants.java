@@ -31,11 +31,12 @@ public final class Constants {
 
   public static final class ArmConstants {
 
+    public static final int TICKS_PER_ROTATION = 1024;
     public static final int kLeftArmMotorPort = 9;
     public static final int kRightArmMotorPort = 10;
     public static final int kLeftIntakeMotorPort = 11;
     public static final int kRightIntakeMotorPort = 12;
-    public static final int kArmMovementDistance = 10000;
+    public static final int kArmMovementDistance = 50;
   }
 
 
