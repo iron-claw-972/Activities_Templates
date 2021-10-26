@@ -56,12 +56,14 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton a = new JoystickButton(controller, DriveConstants.kA);
-    a.whenHeld(new RunCommand(() -> m_robotDrive.tankDrive(-1, 1)));
+    //match joystick button to methods
+    new JoystickButton(controller, JoystickConstants.kA)
+      .whenHeld(new InstantCommand(m_robotDrive::halfSpeed, m_robotDrive))
+      .whenReleased(new InstantCommand(m_robotDrive::fullSpeed, m_robotDrive));
 
-    JoystickButton b = new JoystickButton(controller, DriveConstants.kB);
-    b.whenHeld(new RunCommand(() -> m_robotRotate.powerSet(1)));
-    b.whenReleased(new RunCommand(() -> m_robotRotate.powerSet(0)));
+    new JoystickButton(controller, JoystickConstants.kY)
+      .whenHeld(new InstantCommand(m_robotDrive::wheelOfFortune, m_robotDrive))
+      .whenReleased(new InstantCommand(m_robotDrive::stopPID, m_robotDrive));
 
     JoystickButton x = new JoystickButton(controller, DriveConstants.kX);
     x.whenHeld(new RunCommand(() -> m_robotDrive.tankDrive(-0.5, 0.5)));
