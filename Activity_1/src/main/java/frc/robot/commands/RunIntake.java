@@ -19,26 +19,9 @@ public class RunIntake extends CommandBase {
     m_power = power;
   }
 
-  public double PIDControl(double x, double goal) {
-    double p = 0; //change this later according to falcon 500 stuff
-    double d = 0; //change later
-    double i = 0; //change later, must be extraordinarily small though
-
-    error = goal - x;
-    integral = integral + error;
-    deriv = x - lastX;
-    lastX = x;
-
-    return ((error * p) + (integral * i) - (deriv - d));
-  }
-
   @Override
   public void initialize () {
     m_arm.run(m_power);
-  }
-
-  public void execute() {
-    PIDControl();
   }
 
   @Override

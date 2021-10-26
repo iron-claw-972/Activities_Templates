@@ -17,14 +17,21 @@ public class ArmSubsystem extends SubsystemBase {
     TalonSRX rightArmMotor1 = new TalonSRX(ArmConstants.kRightArmMotorPort);
     TalonSRX leftIntakeMotor2 = new TalonSRX(ArmConstants.kLeftIntakeMotorPort);
     TalonSRX rightIntakeMotor2 = new TalonSRX(ArmConstants.kRightIntakeMotorPort);
-    
+
     public ArmSubsystem() {
         rightIntakeMotor2.set(ControlMode.Follower, ArmConstants.kLeftIntakeMotorPort);
         rightArmMotor1.set(ControlMode.Follower, ArmConstants.kLeftArmMotorPort);
+        leftArmMotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 100);
+
     }
 
     public void run(double armPower) {
         leftArmMotor1.set(ControlMode.PercentOutput, armPower);
         leftIntakeMotor2.set(ControlMode.PercentOutput, armPower);
+    }
+
+    public double getPosition()
+    {
+        return leftArmMotor1.getSensorCollection().getQuadraturePosition();
     }
 }
