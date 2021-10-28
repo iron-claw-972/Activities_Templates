@@ -115,7 +115,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void wheelOfFortune(){
     System.out.println(sparkMotor.getEncoder().getPosition());
-    sparkMotor.set(pid.calculate(sparkMotor.getEncoder().getPosition(), 42));
+    sparkMotor.set(pid.calculate(sparkMotor.getEncoder().getPosition() / DriveConstants.COUNTS_PER_REV, 1));
   }
 
   public void stopPID(){
