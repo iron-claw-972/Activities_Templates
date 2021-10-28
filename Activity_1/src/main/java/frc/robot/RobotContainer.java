@@ -61,12 +61,10 @@ public class RobotContainer {
       .whenHeld(new InstantCommand(m_robotDrive::halfSpeed, m_robotDrive))
       .whenReleased(new InstantCommand(m_robotDrive::fullSpeed, m_robotDrive));
 
-    new JoystickButton(controller, JoystickConstants.kY)
-      .whenHeld(new InstantCommand(m_robotDrive::wheelOfFortune, m_robotDrive))
-      .whenReleased(new InstantCommand(m_robotDrive::stopPID, m_robotDrive));
+    JoystickButton y = new JoystickButton(controller, JoystickConstants.kY);
+    y.whenHeld(new RunCommand(() -> m_robotDrive.wheelOfFortune()));
+    y.whenReleased(new RunCommand(() -> m_robotDrive.stopPID()));
 
-    JoystickButton x = new JoystickButton(controller, DriveConstants.kX);
-    x.whenHeld(new RunCommand(() -> m_robotDrive.tankDrive(-0.5, 0.5)));
   }
 
   public static double getMotorSpeed(int port) {
