@@ -22,6 +22,8 @@ public final class Constants {
     public static final int kLeftMotor2Port = 4;
     public static final int kRightMotor1Port = 7;
     public static final int kRightMotor2Port = 8;
+    public static final int kTopMotor1Port = 5;
+    public static final int kTopMotor2Port = 6;
 
     
     public static final int kControllerPort = 0;
@@ -30,16 +32,18 @@ public final class Constants {
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 5;
 
-    public static final double kP = 0.0025;
+    public static final int COUNTS_PER_REV = 42;
+
+    public static final double kP = 0.001;
     public static final double kI = 0;
     public static final double kD = 0;
 
   }
 
   public static final class JoystickConstants{
-    public static final int kA = 0;
-    public static final int KB = 1;
-    public static final int kY = 2;
+    public static final int kA = 1;
+    public static final int kB = 2;
+    public static final int kY = 4;
 
   }
 

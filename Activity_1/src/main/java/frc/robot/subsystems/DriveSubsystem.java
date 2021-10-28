@@ -15,15 +15,13 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import edu.wpi.first.wpilibj.Encoder;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
-
-  //TODO: 1. Set the motor to the right type (Talon, CAN, etc.).
+           
   // See https://github.com/iron-claw-972/HowToProgramming for how to do this. 
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
   //SensorCollection leftEncoder1 = talon.configSelectedFeedbackSensor(FeedbackDevice.leftMotor1, 0, 100);
@@ -38,7 +36,7 @@ public class DriveSubsystem extends SubsystemBase {
   double speed = 1;
 
   CANSparkMax sparkMotor = new CANSparkMax(1, MotorType.kBrushless);
-  Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+  //Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
   
   PIDController pid = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
 
@@ -53,7 +51,6 @@ public class DriveSubsystem extends SubsystemBase {
    * Creates a new DriveSubsystem.
    */
   public DriveSubsystem() {
-    //TODO: 1. if you have multiple motors per side, you should have one main motor that the others "follow"
     // however if you have 1 motor per side, then remove these
     //leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
     //rightMotor2.set(ControlMode.Follower, DriveConstants.kRightMotor1Port);
@@ -61,9 +58,9 @@ public class DriveSubsystem extends SubsystemBase {
     //how to follow motors with sparkmaxes
     // leftMotor2.follow(leftMotor1);
     // rightMotor2.follow(rightMotor1);
-    sparkEncoder.setDistancePerPulse(1);
+    //sparkEncoder.setDistancePerPulse(1);
 
-   
+    //leftMotor1.setInverted(true);
   }
 
   /**
@@ -77,6 +74,9 @@ public class DriveSubsystem extends SubsystemBase {
     leftMotor1.set(ControlMode.PercentOutput, leftPower*speed);
     rightMotor1.set(ControlMode.PercentOutput, rightPower*speed);
 
+    //if using a sparkmax
+    // leftMotor1.set(leftPower);
+    // rightMotor1.set(rightPower);
   }
 
   public void halfSpeed(){
@@ -100,6 +100,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param turn the commanded turn rotation
    */
   public void arcadeDrive(double throttle, double turn) {
+    //TODO: 2. Add arcade drive here by setting the motors
     leftMotor1.set(ControlMode.PercentOutput, throttle*speed + turn);
     rightMotor1.set(ControlMode.PercentOutput, throttle*speed - turn);
   }
@@ -111,15 +112,10 @@ public class DriveSubsystem extends SubsystemBase {
   }
   */
 
-  double neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 42);
-
-  public void periodic(){ 
-    neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 42);
-  }
 
   public void wheelOfFortune(){
-    sparkMotor.set(neoMotorPower);
-
+    System.out.println(sparkMotor.getEncoder().getPosition());
+    sparkMotor.set(pid.calculate(sparkMotor.getEncoder().getPosition() / DriveConstants.COUNTS_PER_REV, 1));
   }
 
   public void stopPID(){
@@ -127,3 +123,4 @@ public class DriveSubsystem extends SubsystemBase {
   }
   
 }
+
