@@ -111,10 +111,10 @@ public class DriveSubsystem extends SubsystemBase {
   }
   */
 
-  double neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 420);
+  double neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 42);
 
-  public void periodic(){
-    neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 420);
+  public void periodic(){ 
+    neoMotorPower = pid.calculate(sparkEncoder.getDistance(), 42);
   }
 
   public void wheelOfFortune(){
