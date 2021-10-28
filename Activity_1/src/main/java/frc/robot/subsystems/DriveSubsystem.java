@@ -39,7 +39,7 @@ public class DriveSubsystem extends SubsystemBase {
   //Encoder sparkEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
   
   PIDController pid = new PIDController(DriveConstants.kP, DriveConstants.kI, DriveConstants.kD);
-
+  double startPos;
   //how to set up sparkmaxes, if your robot has those
   // CANSparkMax leftMotor1 = new CANSparkMax(DriveConstants.kLeftMotor1Port, MotorType.kBrushless);
   // CANSparkMax leftMotor2 = new CANSparkMax(DriveConstants.kLeftMotor2Port, MotorType.kBrushless);
@@ -51,6 +51,7 @@ public class DriveSubsystem extends SubsystemBase {
    * Creates a new DriveSubsystem.
    */
   public DriveSubsystem() {
+    startPos = sparkMotor.getEncoder().getPosition();
     // however if you have 1 motor per side, then remove these
     //leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
     //rightMotor2.set(ControlMode.Follower, DriveConstants.kRightMotor1Port);
@@ -113,9 +114,10 @@ public class DriveSubsystem extends SubsystemBase {
   */
 
 
-  public void wheelOfFortune(){
-    System.out.println(sparkMotor.getEncoder().getPosition());
-    sparkMotor.set(pid.calculate(sparkMotor.getEncoder().getPosition() / DriveConstants.COUNTS_PER_REV, 1));
+  public void wheelOfFortune(double setpoint){
+    System.out.println((sparkMotor.getEncoder().getPosition() - startPos) / DriveConstants.COUNTS_PER_REV);
+    System.out.println(pid.calculate((sparkMotor.getEncoder().getPosition() - startPos) / DriveConstants.COUNTS_PER_REV, 1));
+    sparkMotor.set(pid.calculate((sparkMotor.getEncoder().getPosition() - startPos) / DriveConstants.COUNTS_PER_REV, 1));
   }
 
   public void stopPID(){

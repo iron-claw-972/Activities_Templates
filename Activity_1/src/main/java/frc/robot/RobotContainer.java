@@ -62,8 +62,8 @@ public class RobotContainer {
       .whenReleased(new InstantCommand(m_robotDrive::fullSpeed, m_robotDrive));
 
     JoystickButton y = new JoystickButton(controller, JoystickConstants.kY);
-    y.whenHeld(new RunCommand(() -> m_robotDrive.wheelOfFortune()));
-    y.whenReleased(new RunCommand(() -> m_robotDrive.stopPID()));
+    y.whenHeld(new RunCommand(() -> m_robotDrive.wheelOfFortune(1)));
+    //y.whenReleased(new RunCommand(() -> m_robotDrive.wheelOfFortune(0)));
 
   }
 
@@ -74,6 +74,7 @@ public class RobotContainer {
   }
 
   /**
+   * 
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
