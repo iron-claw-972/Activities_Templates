@@ -26,8 +26,10 @@ public class RobotContainer {
   private final ArmSubsystem m_robotArm = new ArmSubsystem();
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
-    () -> m_robotDrive.tankDrive(0.2, -0.2),
+    () -> m_robotDrive.tankDrive(0.2, 0.2),
     m_robotDrive);
+
+  private final Command m_autoCommand = new RunPIDIntake(m_robotArm, 20);
 
   // The driver's controller
   static Joystick controller = new Joystick(DriveConstants.kControllerPort);
