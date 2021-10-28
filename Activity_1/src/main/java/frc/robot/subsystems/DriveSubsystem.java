@@ -51,6 +51,7 @@ public class DriveSubsystem extends SubsystemBase {
    * Creates a new DriveSubsystem.
    */
   public DriveSubsystem() {
+    double startPosition = sparkMotor..getEncoder().getPosition();
     // however if you have 1 motor per side, then remove these
     //leftMotor2.set(ControlMode.Follower, DriveConstants.kLeftMotor1Port);
     //rightMotor2.set(ControlMode.Follower, DriveConstants.kRightMotor1Port);
@@ -61,6 +62,7 @@ public class DriveSubsystem extends SubsystemBase {
     //sparkEncoder.setDistancePerPulse(1);
 
     //leftMotor1.setInverted(true);
+
   }
 
   /**
@@ -113,9 +115,9 @@ public class DriveSubsystem extends SubsystemBase {
   */
 
 
-  public void wheelOfFortune(){
+  public void wheelOfFortune(double setPoint){
     System.out.println(sparkMotor.getEncoder().getPosition());
-    sparkMotor.set(pid.calculate(sparkMotor.getEncoder().getPosition() / DriveConstants.COUNTS_PER_REV, 1));
+    sparkMotor.set(pid.calculate((sparkMotor.getEncoder().getPosition() - startPosition) / DriveConstants.COUNTS_PER_REV, 1));
   }
 
   public void stopPID(){
