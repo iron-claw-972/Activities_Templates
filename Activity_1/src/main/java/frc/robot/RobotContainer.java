@@ -63,7 +63,7 @@ public class RobotContainer {
 
     JoystickButton y = new JoystickButton(controller, JoystickConstants.kY);
     y.whenHeld(new RunCommand(() -> m_robotDrive.wheelOfFortune(1)));
-    //y.whenReleased(new RunCommand(() -> m_robotDrive.wheelOfFortune(0)));
+    y.whenReleased(new RunCommand(() -> m_robotDrive.stopPID()));
 
   }
 

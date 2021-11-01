@@ -32,7 +32,7 @@ public final class Constants {
     public static final int kLeftJoyAxis = 1;
     public static final int kRightJoyAxis = 5;
 
-    public static final int COUNTS_PER_REV = 69;
+    public static final int COUNTS_PER_REV = 42;
 
     public static final double kP = 0.1;
     public static final double kI = 0;
