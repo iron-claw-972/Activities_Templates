@@ -65,7 +65,7 @@ public class RobotContainer {
       .whenReleased(new InstantCommand(m_robotDrive::fullSpeed, m_robotDrive));
 
     new JoystickButton(controller, JoystickConstants.kY)
-      .whenHeld(new InstantCommand(m_robotDrive::wheelOfFortune, m_robotDrive))
+      .whenHeld(new RunCommand(() -> m_robotDrive.wheelOfFortune(DriveConstants.setPoint), m_robotDrive))
       .whenReleased(new InstantCommand(m_robotDrive::stopPID, m_robotDrive));
 
 
