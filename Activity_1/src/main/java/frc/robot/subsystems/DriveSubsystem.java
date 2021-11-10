@@ -16,6 +16,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -25,11 +27,11 @@ public class DriveSubsystem extends SubsystemBase {
   // Make sure to set the right amount of motors! (if you only have 2 motors don't make 4)
 
   TalonSRX leftMotor1 = new TalonSRX(DriveConstants.kLeftMotorPort);
-  TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotor2Port);
-  TalonSRX leftMotor3 = new TalonSRX(DriveConstants.kleftMotor3Port);
+  TalonSRX leftMotor2 = new TalonSRX(DriveConstants.kLeftMotorPort);
+  TalonSRX leftMotor3 = new TalonSRX(DriveConstants.kLeftMotorPort);
 
   TalonSRX rightMotor1 = new TalonSRX(DriveConstants.kRightMotorPort);
-  TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotor2Port);
+  TalonSRX rightMotor2 = new TalonSRX(DriveConstants.kRightMotorPort);
   
 
   //how to set up sparkmaxes, if your robot has those
@@ -81,11 +83,5 @@ public class DriveSubsystem extends SubsystemBase {
   public void arcadeDrive(double throttle, double turn) {
     //TODO: 2. Add arcade drive here by setting the motors
   }
+ }
 
-  }
-  public void runPID(double setpoint) {
-    double currentVelocity = leftArmMotor.getSensorCollection().getQuadraturePosition();
-    leftArmMotor.set(ControlMode.PercentOutput, pid.calculate(currentVelocity, setpoint));
-    leftIntakeMotor.set(ControlMode.PercentOutput, 10);
-}
-}
