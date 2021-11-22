@@ -11,6 +11,7 @@ import frc.robot.Constants.*;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.TankDrive;
 import frc.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -26,7 +27,7 @@ import edu.wpi.first.wpilibj.SPI;
 public class RobotContainer {
   //subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-
+  //private NavXSubsystem m_navX = new NavXSubsystem(); 
   //autonomous command, will spin robot in circle
   private final Command m_autoCommand =   new RunCommand(
     () -> m_robotDrive.tankDrive(0.2, -0.2),
@@ -42,7 +43,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    // Configure default commands (will be run continously when nothing else is scheduled)
+    // Configure default commands (will be run conPPtinously when nothing else is scheduled)
     //TODO: 2. Switch this to a new ArcadeDrive, you need to update the method in DriveSubsystem.java
     
     m_robotDrive.setDefaultCommand(
@@ -51,14 +52,16 @@ public class RobotContainer {
   }
 
     /**
-   * Use this method to define your button->command mappings.  Buttons can be created by
+   * Use this method to define your button->command mappings.  PButtons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
+
   private void configureButtonBindings() {          
-    new JoystickButton(controller, ButtonConstants.kX).whenPressed(new RunCommand(() -> m_robotDrive.tankDrive(1, 0.2)).withTimeout(2));
-  }
+    //new JoystickButton(controller, ButtonConstants.kX).whenPressed(new RunCommand(() ->System.out.println(ahrs.getCompassHeading() + "L")));
+    
+    }
 
   public static double getMotorSpeed(int port) {
     // get a joystick axis
