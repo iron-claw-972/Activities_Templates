@@ -19,9 +19,9 @@ public final class Constants {
   public static final class DriveConstants {
     //TODO: 1. Set this to the motor ports
     public static final int kLeftMotor1Port = 2;
-    public static final int kLeftMotor2Port = 2;
+    public static final int kLeftMotor2Port = 3;
     public static final int kRightMotor1Port = 1;
-    public static final int kRightMotor2Port = 1;
+    public static final int kRightMotor2Port = 4;
 
     //make sure your controller is 0
     public static final int kControllerPort = 0;
@@ -31,6 +31,9 @@ public final class Constants {
     public static final int kRightJoyAxis = 4;
   }
   public static final class ButtonConstants{
-      public static final int kX = 3;
+      public static final int kA = 1;
+      public static final int kB = 2;
+      public static final int kBL = 5;
+      public static final int kBR = 6;
   }
 }
