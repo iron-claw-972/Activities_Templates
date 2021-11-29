@@ -61,11 +61,13 @@ public class RobotContainer {
 
     new JoystickButton(controller, ButtonConstants.kB).whenPressed(new RunCommand(() -> m_intake.intakeStop()));
 
-    new JoystickButton(controller, ButtonConstants.kBL).whenPressed(new RunCommand(() -> m_door.doorSpin()));
+    JoystickButton leftBump = new JoystickButton(controller, ButtonConstants.kBL);
+    leftBump.whenHeld(new RunCommand(() -> m_door.doorSpin()));
+    leftBump.whenReleased(new RunCommand(() -> m_door.doorStop()));
 
-    new JoystickButton(controller, ButtonConstants.kBR).whenPressed(new RunCommand(() -> m_door.doorReverse()));
-
-    
+    JoystickButton rightBump = new JoystickButton(controller, ButtonConstants.kBR);
+    rightBump.whenHeld(new RunCommand(() -> m_door.doorReverse()));
+    rightBump.whenReleased(new RunCommand(() -> m_door.doorStop()));
   }
 
   public static double getMotorSpeed(int port) {

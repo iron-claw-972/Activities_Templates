@@ -31,4 +31,8 @@ public class DoorSubsystem extends SubsystemBase {
     motor3.setInverted(true);
     motor3.set(ControlMode.PercentOutput, 0.05);
   }
+
+  public void doorStop(){
+    motor3.set(ControlMode.PercentOutput, 0);
+  }
 }
