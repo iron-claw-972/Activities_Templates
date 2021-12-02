@@ -57,9 +57,9 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(controller, ButtonConstants.kA).whenPressed(new RunCommand(() -> m_intake.intakeSpin()));
+    new JoystickButton(controller, 1).whenPressed(new InstantCommand(() -> m_intake.intakeSpin()));
 
-    new JoystickButton(controller, ButtonConstants.kB).whenPressed(new RunCommand(() -> m_intake.intakeStop()));
+    new JoystickButton(controller, 2).whenPressed(new InstantCommand(() -> m_intake.intakeStop()));
 
     JoystickButton leftBump = new JoystickButton(controller, ButtonConstants.kBL);
     leftBump.whenHeld(new RunCommand(() -> m_door.doorSpin()));

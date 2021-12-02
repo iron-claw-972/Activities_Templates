@@ -20,19 +20,17 @@ import frc.robot.Constants.DriveConstants;
 
 public class DoorSubsystem extends SubsystemBase {
 
-  TalonSRX motor3 = new TalonSRX(8);
+  TalonSRX motor4 = new TalonSRX(1);
 
   public void doorSpin() {
-    motor3.setInverted(false);
-    motor3.set(ControlMode.PercentOutput, 0.05);
+    motor4.set(ControlMode.PercentOutput, 0.25);
   }
 
   public void doorReverse() {
-    motor3.setInverted(true);
-    motor3.set(ControlMode.PercentOutput, 0.05);
+    motor4.set(ControlMode.PercentOutput, -0.25);
   }
 
   public void doorStop(){
-    motor3.set(ControlMode.PercentOutput, 0);
+    motor4.set(ControlMode.PercentOutput, 0);
   }
 }
